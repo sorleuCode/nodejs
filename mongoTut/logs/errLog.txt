@@ -48,3 +48,8 @@
 20240520	11:50:15	b359447a-30d0-4160-8b7d-4ca0f48952e0	TypeError: Cannot read properties of undefined (reading 'UserInfo')
 20240520	11:52:43	20714692-dfe0-45cf-9bd8-0190a4921cd6	TypeError: Cannot read properties of undefined (reading 'UserInfo')
 20240520	11:57:14	f3527e3e-930c-40b9-9a1d-7691dc4c9f5d	TypeError: Cannot read properties of undefined (reading 'UserInfo')
+20240521	15:14:00	56429c5c-c88f-46d3-badf-e7af60bf78b4	TypeError: Cannot read properties of undefined (reading 'UserInfo')
+20240521	15:14:06	c2656cbd-dd15-42e8-a803-121be45848bb	TypeError: Cannot read properties of undefined (reading 'UserInfo')
+20240521	16:52:38	3f64a157-05bd-4817-939f-4fc292cfa37f	TypeError: Cannot read properties of undefined (reading 'UserInfo')
+20240521	17:43:07	c92bc0c0-6d75-42b1-9421-0865368f77b2	TypeError: Cannot read properties of undefined (reading 'UserInfo')
+20240521	17:47:06	d0104998-3f10-4696-8421-878442d5f73f	TypeError: Cannot read properties of undefined (reading 'UserInfo')

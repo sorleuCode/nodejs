@@ -1,12 +1,19 @@
-const usersDB = {
-    users: require("../model/users.json"),
-    setUsers: function (data) {
-        this.users = data
-    }
-}
+const User = require("../model/User")
 
-const fsPromise = require("fs").promises;
-const path = require("path");
+// const usersDB = {
+//     users: require("../model/users.json"),
+//     setUsers: function (data) {
+//         this.users = data
+//     }
+// }
+
+
+// commented code below no more needed
+
+// const fsPromise = require("fs").promises;
+// const path = require("path");
+
+
 const bcrypt = require("bcrypt");
 
 const handleNewUser = async (req, res) => {
@@ -14,19 +21,27 @@ const handleNewUser = async (req, res) => {
 
     if (!user || !pwd) return res.status(400).json({ "message": `USername and password are required` })
 
-    const duplicate = usersDB.users.find(person => person.username === user)
+    const duplicate = await User.findOne({username: user}).exec();
     if (duplicate) return res.sendStatus(409); //meaning conflict
 
     try {
         // encrypting the password
 
-        const hashedPwd = await bcrypt.hash(pwd, 10)
+        const hashedPwd = await bcrypt.hash(pwd, 10);
+
+        // create and store the new user
+        const result = await User.create({
+            "username": user,
+            "password": hashedPwd
+        })
+        console.log(result)
 
         // storing the new user
-        const newUser = {"username": user, "roles": {"User": 2001}, "password": hashedPwd}
-        usersDB.setUsers([...usersDB.users, newUser])
-        await fsPromise.writeFile(path.join(__dirname, "../model/users.json"), JSON.stringify(usersDB.users));
-        console.log(usersDB.users);
+        // const newUser = {"username": user, "roles": {"User": 2001}, "password": hashedPwd}
+        // usersDB.setUsers([...usersDB.users, newUser])
+        // await fsPromise.writeFile(path.join(__dirname, "../model/users.json"), JSON.stringify(usersDB.users));
+        // console.log(usersDB.users);
+
         res.status(201).json({"success": `New User ${user} created`})
 
     } catch (error) {
